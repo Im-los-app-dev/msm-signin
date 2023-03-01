@@ -10,6 +10,10 @@ class MoviesController < ApplicationController
   def show
     the_id = params.fetch("path_id")
 
+    @matching_bookmark = Bookmark.where({:user_id => session.fetch(:user_id), :movie_id=> the_id }).first
+  
+
+
     matching_movies = Movie.where({ :id => the_id })
 
     @the_movie = matching_movies.at(0)

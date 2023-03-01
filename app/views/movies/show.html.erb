@@ -18,6 +18,23 @@
       </div>
     </div>
 
+
+    <% if  @matching_bookmark == nil  %>
+      <% if session.fetch(:user_id) != nil %>
+        <form action="/insert_bookmark" method = "post">
+        <input type="hidden" name= "query_movie_id" value="<%=@the_movie.id %>">
+        <button>Bookmark this movie</button>
+        </form>
+      <% end %>
+      
+    <% else %>
+      <a href="/delete_bookmark/<%= @matching_bookmark.id %>"> Un-bookmark </a>
+    
+
+
+    <% end %>
+    
+
     <dl>
       <dt>
         Title
@@ -58,7 +75,7 @@
         Image
       </dt>
       <dd>
-        <%= @the_movie.image %>
+        <img src = "<%= @the_movie.image %>"> 
       </dd>
 
       <dt>

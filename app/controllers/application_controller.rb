@@ -16,5 +16,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def index
+
+    render("/home/home.html.erb")
+  end
 
 end
